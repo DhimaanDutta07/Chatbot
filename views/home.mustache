@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapid GPT - Your AI-Powered Assistant</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      background-color: #1a1a1a;
+      color: #f4f4f5;
+      overflow-x: hidden;
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInUp 1s ease-out;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      color: #a1a1aa;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1.2s ease-out 0.2s;
+      animation-fill-mode: both;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      animation: fadeInUp 1.4s ease-out 0.4s;
+      animation-fill-mode: both;
+    }
+    .cta-button {
+      padding: 16px 32px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .cta-button.login {
+      background-color: #3b82f6;
+      color: white;
+    }
+    .cta-button.register {
+      background-color: #10b981;
+      color: white;
+    }
+    .cta-button:hover {
+      transform: translateY(-4px);
+    }
+    .cta-button.login:hover {
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+    }
+    .cta-button.register:hover {
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
+    }
+    .features {
+      padding: 80px 20px;
+      background-color: #2a2a2a;
+      text-align: center;
+    }
+    .features h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 40px;
+      color: #ffffff;
+      animation: fadeIn 1s ease-out;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      background-color: #3f3f3f;
+      padding: 24px;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: slideUp 1s ease-out;
+      animation-fill-mode: both;
+    }
+    .feature-card:nth-child(1) { animation-delay: 0.2s; }
+    .feature-card:nth-child(2) { animation-delay: 0.4s; }
+    .feature-card:nth-child(3) { animation-delay: 0.6s; }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+    .feature-card i {
+      font-size: 2.5rem;
+      color: #3b82f6;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .feature-card p {
+      font-size: 1rem;
+      color: #a1a1aa;
+    }
+    .footer {
+      padding: 40px 20px;
+      background-color: #1a1a1a;
+      text-align: center;
+      border-top: 1px solid #404040;
+    }
+    .footer p {
+      color: #a1a1aa;
+      font-size: 1rem;
+    }
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.1;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+      animation: pulse 10s infinite ease-in-out;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.2;
+      }
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+      .features h2 {
+        font-size: 2rem;
+      }
+      .feature-card {
+        padding: 16px;
+      }
+      .cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .cta-button {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-background"></div>
+    <h1>RAPID GPT</h1>
+    <p>Unleash the power of AI to answer your questions, spark creativity, and boost productivity with lightning-fast responses.</p>
+    <div class="cta-buttons">
+      <button class="cta-button login" onclick="window.location.href='/login'">Log In</button>
+      <button class="cta-button register" onclick="window.location.href='/register'">Register</button>
+    </div>
+  </div>
+
+  <section class="features">
+    <h2>Why Choose Rapid GPT?</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <i class="fas fa-bolt"></i>
+        <h3>Blazing Fast</h3>
+        <p>Get instant answers to your queries with our high-speed AI processing.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-brain"></i>
+        <h3>Intelligent Insights</h3>
+        <p>Receive accurate and context-aware responses tailored to your needs.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-comment-dots"></i>
+        <h3>Interactive Chat</h3>
+        <p>Engage in seamless conversations with a user-friendly interface.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Rapid GPT. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.feature-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    window.addEventListener('scroll', () => {
+      const heroBg = document.querySelector('.hero-background');
+      heroBg.style.transform = `translateY(${window.scrollY * 0.2}px)`;
+    });
+  </script>
+</body>
+</html>
